@@ -6,5 +6,11 @@
       "branch": "main",
       "description": "Use for current Effect v4 implementation details, migration guidance, examples, and package APIs."
     }
+  },
+  "mcp": {
+    "cloudflare-api": {
+      "type": "remote",
+      "url": "https://mcp.cloudflare.com/mcp"
+    }
   }
 }

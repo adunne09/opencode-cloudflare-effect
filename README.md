@@ -8,6 +8,7 @@ Use this repository by cloning it as a base project or by copying its `.opencode
 
 - Cloudflare-focused opencode skills for Workers, Durable Objects, Wrangler, email, Agents SDK, and related platform services.
 - Effect-focused guidance for typed errors, services, layers, schemas, and repository conventions.
+- An `effect` reference to the Effect source repository for current APIs and migration guidance.
 - Slash commands for focused project workflows.
 
 ## Slash Commands
@@ -21,16 +22,16 @@ The migration command intentionally focuses on framework migration. It assumes t
 Clone this repository into a new project:
 
 ```sh
-mkdir my-project && cd my-project && git init && git submodule add https://github.com/adunne09/opencode-cloudflare-effect .opencode-config && ln -s .opencode-config/.opencode .opencode && opencode
+mkdir my-project && cd my-project && git init && git submodule add https://github.com/adunne09/opencode-cloudflare-effect .opencode-config && ln -s .opencode-config/.opencode .opencode && ln -s .opencode-config/opencode.jsonc opencode.jsonc && opencode
 ```
 
 Install the opencode configuration into an existing project:
 
 ```sh
-(git rev-parse --is-inside-work-tree >/dev/null 2>&1 || git init) && git submodule add https://github.com/adunne09/opencode-cloudflare-effect .opencode-config && ln -s .opencode-config/.opencode .opencode
+(git rev-parse --is-inside-work-tree >/dev/null 2>&1 || git init) && git submodule add https://github.com/adunne09/opencode-cloudflare-effect .opencode-config && ln -s .opencode-config/.opencode .opencode && { test -e opencode.jsonc || ln -s .opencode-config/opencode.jsonc opencode.jsonc; }
 ```
 
-This installs the configuration repository as a Git submodule at `.opencode-config` and exposes its `.opencode` directory through a local `.opencode` symlink. If you improve the shared config from inside another project, commit and push from `.opencode-config` to update the upstream configuration repository.
+This installs the configuration repository as a Git submodule at `.opencode-config`, exposes its `.opencode` directory through a local `.opencode` symlink, and links `opencode.jsonc` when the project does not already have one. If you improve the shared config from inside another project, commit and push from `.opencode-config` to update the upstream configuration repository.
 
 Restart opencode after copying or editing configuration files so the new commands and skills are loaded.
 

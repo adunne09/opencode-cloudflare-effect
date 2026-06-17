@@ -14,6 +14,13 @@ Use this skill when starting or fixing a Cloudflare-native app that combines:
 
 This skill is intentionally practical. It records conventions and failure modes that are easy to rediscover the hard way.
 
+## Documentation Source
+
+- Use `https://v2.alchemy.run` as the primary documentation source for Alchemy + Effect work.
+- Prefer `v2.alchemy.run` pages for the Effect-native Stack API, `alchemy/Cloudflare` imports, `Alchemy.Stack`, platform resources, bindings, layers, local development, testing, and typed Cloudflare errors.
+- Do not rely on plain `https://alchemy.run` for Effect-native guidance; it may describe the older async/top-level-await Alchemy API or omit the v2 Effect APIs.
+- When researching a Cloudflare resource, start with the matching `v2.alchemy.run` docs page, then verify exact installed APIs against `alchemy@next` package types if the docs are incomplete or ambiguous.
+
 ## Package Choices
 
 - Use `alchemy@next` for the Alchemy Effect API.

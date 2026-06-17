@@ -6,7 +6,7 @@ Help migrate this existing project to Effect while keeping the current Cloudflar
 
 Assume Cloudflare is already the platform. Do not plan or perform an infrastructure-provider migration as part of this command.
 
-Start interactively by asking the user these questions before making changes:
+First inspect the repository and answer these discovery questions yourself as much as possible from files, scripts, configuration, routes, tests, and documentation:
 
 - What framework or application structure is used today?
 - What Cloudflare target is already deployed?
@@ -15,4 +15,6 @@ Start interactively by asking the user these questions before making changes:
 - What tests or manual checks prove the migration worked?
 - Do you want an incremental migration or a focused first slice?
 
-After the user answers, inspect the repository. Prefer an incremental migration that introduces Effect at the application boundaries first, preserves deployed behavior, and keeps Cloudflare configuration stable. Avoid broad rewrites. Implement the smallest safe slice.
+Do not start by asking the user these questions. Build an explicit discovery summary with inferred answers and evidence. If one or more answers cannot be determined from the repository, stop and ask the user only the missing questions needed to choose a safe first slice.
+
+Prefer an incremental migration that introduces Effect at the application boundaries first, preserves deployed behavior, and keeps Cloudflare configuration stable. Avoid broad rewrites. Implement the smallest safe slice.

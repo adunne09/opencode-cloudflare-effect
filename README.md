@@ -21,16 +21,16 @@ The migration command intentionally focuses on framework migration. It assumes t
 Clone this repository into a new project:
 
 ```sh
-git clone https://github.com/adunne09/opencode-cloudflare-effect my-project
-cd my-project
-opencode
+mkdir my-project && cd my-project && git init && git submodule add https://github.com/adunne09/opencode-cloudflare-effect .opencode-config && ln -s .opencode-config/.opencode .opencode && opencode
 ```
 
-Install only the opencode configuration into an existing project:
+Install the opencode configuration into an existing project:
 
 ```sh
-tmp=$(mktemp -d) && git clone --depth 1 --filter=blob:none --sparse https://github.com/adunne09/opencode-cloudflare-effect "$tmp" && git -C "$tmp" sparse-checkout set .opencode && cp -R "$tmp/.opencode" . && rm -rf "$tmp"
+(git rev-parse --is-inside-work-tree >/dev/null 2>&1 || git init) && git submodule add https://github.com/adunne09/opencode-cloudflare-effect .opencode-config && ln -s .opencode-config/.opencode .opencode
 ```
+
+This installs the configuration repository as a Git submodule at `.opencode-config` and exposes its `.opencode` directory through a local `.opencode` symlink. If you improve the shared config from inside another project, commit and push from `.opencode-config` to update the upstream configuration repository.
 
 Restart opencode after copying or editing configuration files so the new commands and skills are loaded.
 
